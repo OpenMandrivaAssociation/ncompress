@@ -1,7 +1,7 @@
 %define	name	ncompress
 %define	oname	compress
 %define	version	4.2.4
-%define	release	%mkrel 32
+%define	release	%mkrel 33
 
 Summary:	Fast compression and decompression utilities
 Name:		%{name}
@@ -17,6 +17,9 @@ Patch2:		ncompress-4.2.4-filenamelen.patch.bz2
 Patch3:		ncompress-2GB.patch.bz2
 Patch4:		ncompress-4.2.4-CVE-2006-1168.patch
 Patch5:		ncompress-4.2.4-zerobyteforce.patch
+Patch6: 	ncompress-4.2.4-bssUnderflow.patch
+Patch7: 	ncompress-4.2.4-endians.patch
+
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -34,27 +37,19 @@ gzip can handle compressed files.
 %patch3 -p1 -b .2gb
 %patch4 -p0 -b .cve-2006-1168
 %patch5 -p1 -b .zerobyteforce
+%patch6 -p1 -b .bssUnderflow
+%patch7 -p1 -b .endians
+
 
 %build
-#- check for cpu endianess
-F=./ck-endian
-cat > $F.c << EOF
-int main(void) {
-  union { long l; char c[sizeof(long)]; } u = { .l = 1 };
-  return u.c[sizeof(long) - 1] == 1;
-}
-EOF
-%__cc -o $F $F.c || exit 1
-ENDIAN_FLAGS="`$F && echo 4321 || echo 1234`"
-
-#- check for 32-bit cpus
-F=./ck-arch32
-echo 'int main(void) { return sizeof(void *) != 4; }' | %__cc -o $F -xc - || exit 1
-$F && ARCH32_FLAGS=" -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE"
-
 #- extra CFLAGS
 %ifarch alpha
 EXTRA_FLAGS="-DNOALIGN=0"
+%endif
+ENDIAN_FLAGS=4321
+
+%ifarch sparc m68k armv4l ppc s390 s390x ppc64 sparc64
+ENDIAN_FLAGS=1234
 %endif
 
 %make RPM_OPT_FLAGS="$RPM_OPT_FLAGS $ARCH32_FLAGS $EXTRA_FLAGS" ENDIAN="$ENDIAN_FLAGS"
