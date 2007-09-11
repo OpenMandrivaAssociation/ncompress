@@ -1,7 +1,7 @@
 %define	name	ncompress
 %define	oname	compress
 %define	version	4.2.4
-%define	release	%mkrel 33
+%define	release	%mkrel 34
 
 Summary:	Fast compression and decompression utilities
 Name:		%{name}
@@ -15,10 +15,9 @@ Patch0:		ncompress-4.2.4-make.patch.bz2
 Patch1:		ncompress-4.2.4-lfs2.patch.bz2
 Patch2:		ncompress-4.2.4-filenamelen.patch.bz2
 Patch3:		ncompress-2GB.patch.bz2
-Patch4:		ncompress-4.2.4-CVE-2006-1168.patch
-Patch5:		ncompress-4.2.4-zerobyteforce.patch
-Patch6: 	ncompress-4.2.4-bssUnderflow.patch
-Patch7: 	ncompress-4.2.4-endians.patch
+Patch4:		ncompress-4.2.4-zerobyteforce.patch
+Patch5: 	ncompress-4.2.4-bssUnderflow.patch
+Patch6: 	ncompress-4.2.4-endians.patch
 
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -35,15 +34,14 @@ gzip can handle compressed files.
 %patch1 -p1 -b .lfs
 %patch2 -p1 -b .filenamelen
 %patch3 -p1 -b .2gb
-%patch4 -p0 -b .cve-2006-1168
-%patch5 -p1 -b .zerobyteforce
-%patch6 -p1 -b .bssUnderflow
-%patch7 -p1 -b .endians
+%patch4 -p1 -b .zerobyteforce
+%patch5 -p1 -b .bssUnderflow
+%patch6 -p1 -b .endians
 
 
 %build
 #- extra CFLAGS
-%ifarch alpha
+%ifarch alpha ia64
 EXTRA_FLAGS="-DNOALIGN=0"
 %endif
 ENDIAN_FLAGS=4321
