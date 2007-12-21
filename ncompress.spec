@@ -19,6 +19,7 @@ Patch4:		ncompress-4.2.4-zerobyteforce.patch
 Patch5: 	ncompress-4.2.4-bssUnderflow.patch
 Patch6: 	ncompress-4.2.4-endians.patch
 
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The ncompress package contains the compress and uncompress
