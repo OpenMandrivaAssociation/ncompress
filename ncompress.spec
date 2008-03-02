@@ -9,7 +9,7 @@ Version:	%{version}
 Release:	%{release}
 License:	Public Domain
 Group:		Archiving/Compression
-URL:		ftp://sunsite.unc.edu/pub/Linux/utils/compress/
+URL:		http://ncompress.sourceforge.net/
 Source:		http://downloads.sourceforge.net/ncompress/%{name}-%{version}.tar.gz
 Patch0:		ncompress-4.2.4-make.patch.bz2
 Patch1:		ncompress-4.2.4-lfs2.patch.bz2
