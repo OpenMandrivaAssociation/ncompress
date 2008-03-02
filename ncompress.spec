@@ -11,10 +11,10 @@ License:	Public Domain
 Group:		Archiving/Compression
 URL:		http://ncompress.sourceforge.net/
 Source:		http://downloads.sourceforge.net/ncompress/%{name}-%{version}.tar.gz
-Patch0:		ncompress-4.2.4-make.patch.bz2
-Patch1:		ncompress-4.2.4-lfs2.patch.bz2
-Patch2:		ncompress-4.2.4-filenamelen.patch.bz2
-Patch3:		ncompress-2GB.patch.bz2
+Patch0:		ncompress-4.2.4-make.patch
+Patch1:		ncompress-4.2.4-lfs2.patch
+Patch2:		ncompress-4.2.4-filenamelen.patch
+Patch3:		ncompress-2GB.patch
 Patch4:		ncompress-4.2.4-zerobyteforce.patch
 Patch5: 	ncompress-4.2.4-bssUnderflow.patch
 Patch6: 	ncompress-4.2.4-endians.patch
