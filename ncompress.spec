@@ -15,7 +15,6 @@ Patch0:		ncompress-4.2.4-make.patch
 Patch1:		ncompress-4.2.4-lfs2.patch
 Patch2:		ncompress-4.2.4.2-filenamelen.patch
 Patch3:		ncompress-2GB.patch
-Patch5: 	ncompress-4.2.4-bssUnderflow.patch
 Patch6: 	ncompress-4.2.4-endians.patch
 
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -33,7 +32,6 @@ gzip can handle compressed files.
 %patch1 -p1 -b .lfs
 %patch2 -p1 -b .filenamelen
 %patch3 -p1 -b .2gb
-%patch5 -p1 -b .bssUnderflow
 %patch6 -p1 -b .endians
 
 
