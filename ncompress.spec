@@ -13,7 +13,7 @@ URL:		http://ncompress.sourceforge.net/
 Source:		http://downloads.sourceforge.net/ncompress/%{name}-%{version}.tar.gz
 Patch0:		ncompress-4.2.4-make.patch
 Patch1:		ncompress-4.2.4-lfs2.patch
-Patch2:		ncompress-4.2.4-filenamelen.patch
+Patch2:		ncompress-4.2.4.2-filenamelen.patch
 Patch3:		ncompress-2GB.patch
 Patch4:		ncompress-4.2.4-zerobyteforce.patch
 Patch5: 	ncompress-4.2.4-bssUnderflow.patch
