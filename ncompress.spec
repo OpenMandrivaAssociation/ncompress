@@ -1,7 +1,7 @@
 %define	name	ncompress
 %define	oname	compress
-%define	version	4.2.4
-%define	release	%mkrel 36
+%define	version	4.2.4.2
+%define	release	%mkrel 1
 
 Summary:	Fast compression and decompression utilities
 Name:		%{name}
@@ -10,7 +10,7 @@ Release:	%{release}
 License:	Public Domain
 Group:		Archiving/Compression
 URL:		ftp://sunsite.unc.edu/pub/Linux/utils/compress/
-Source:		ftp://sunsite.unc.edu/pub/Linux/utils/compress/%{name}-%{version}.tar.bz2
+Source:		http://downloads.sourceforge.net/ncompress/%{name}-%{version}.tar.gz
 Patch0:		ncompress-4.2.4-make.patch.bz2
 Patch1:		ncompress-4.2.4-lfs2.patch.bz2
 Patch2:		ncompress-4.2.4-filenamelen.patch.bz2
