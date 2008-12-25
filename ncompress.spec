@@ -1,7 +1,7 @@
 %define	name	ncompress
 %define	oname	compress
 %define	version	4.2.4.2
-%define	release	%mkrel 2
+%define	release	%mkrel 3
 
 Summary:	Fast compression and decompression utilities
 Name:		%{name}
@@ -16,7 +16,7 @@ Patch1:		ncompress-4.2.4-lfs2.patch
 Patch2:		ncompress-4.2.4.2-filenamelen.patch
 Patch3:		ncompress-2GB.patch
 Patch6: 	ncompress-4.2.4-endians.patch
-
+Patch7:		ncompress-4.2.4.2-LDFLAGS.diff
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -27,13 +27,14 @@ utilities can't handle gzipped (.gz file extensions) files, but
 gzip can handle compressed files.
 
 %prep
+
 %setup -q
 %patch0 -p1
-%patch1 -p1 -b .lfs
+%patch1 -p0 -b .lfs
 %patch2 -p1 -b .filenamelen
 %patch3 -p1 -b .2gb
 %patch6 -p1 -b .endians
-
+%patch7 -p0 -b .LDFLAGS
 
 %build
 #- extra CFLAGS
@@ -46,7 +47,7 @@ ENDIAN_FLAGS=4321
 ENDIAN_FLAGS=1234
 %endif
 
-%make RPM_OPT_FLAGS="$RPM_OPT_FLAGS $ARCH32_FLAGS $EXTRA_FLAGS" ENDIAN="$ENDIAN_FLAGS"
+%make RPM_OPT_FLAGS="%{optflags} $ARCH32_FLAGS $EXTRA_FLAGS" ENDIAN="$ENDIAN_FLAGS" LDFLAGS="%{ldflags}"
 
 %install
 rm -rf %{buildroot}
