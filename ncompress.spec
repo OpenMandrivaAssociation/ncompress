@@ -1,7 +1,7 @@
 %define	name	ncompress
 %define	oname	compress
 %define	version	4.2.4.2
-%define	release	%mkrel 3
+%define	release	%mkrel 4
 
 Summary:	Fast compression and decompression utilities
 Name:		%{name}
