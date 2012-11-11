@@ -1,0 +1,19 @@
+--- Makefile	2008-12-25 20:26:56.000000000 +0100
++++ Makefile.oden	2008-12-25 20:28:11.000000000 +0100
+@@ -2,6 +2,7 @@
+ 
+ # C complier
+ CC=cc $(RPM_OPT_FLAGS)
++LDFLAGS=
+ 
+ # Install directory for binarys
+ BINDIR=/usr/bin
+@@ -35,7 +36,7 @@
+ 
+ 
+ compress:	Makefile compress42.c patchlevel.h
+-	 $(CC) -o compress  $(options) "-DCOMPILE_DATE=\"`date`\"" compress42.c 
++	 $(CC) $(LDFLAGS) -o compress  $(options) "-DCOMPILE_DATE=\"`date`\"" compress42.c 
+ 
+ install:	compress
+ 		[ -f $(BINDIR)/compress ] && \
