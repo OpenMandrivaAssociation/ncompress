@@ -2,7 +2,7 @@
 
 Summary:	Fast compression and decompression utilities
 Name:		ncompress
-Version:	4.2.4.4
+Version:	4.2.4.5
 Release:	12
 License:	Public Domain
 Group:		Archiving/Compression
