@@ -2,18 +2,12 @@
 
 Summary:	Fast compression and decompression utilities
 Name:		ncompress
-Version:	4.2.4.5
-Release:	12
+Version:	5.0
+Release:	1
 License:	Public Domain
 Group:		Archiving/Compression
-Url:		http://ncompress.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/ncompress/%{name}-%{version}.tar.gz
-Patch0:		ncompress-4.2.4-make.patch
-Patch1:		ncompress-4.2.4-lfs2.patch
-Patch2:		ncompress-4.2.4.2-filenamelen.patch
-Patch3:		ncompress-2GB.patch
-Patch6:		ncompress-4.2.4-endians.patch
-Patch7:		ncompress-4.2.4.2-LDFLAGS.diff
+Url:		https://github.com/vapier/ncompress
+Source0:	https://github.com/vapier/ncompress/archive/v%{version}.tar.gz
 
 %description
 The ncompress package contains the compress and uncompress
@@ -23,13 +17,7 @@ utilities can't handle gzipped (.gz file extensions) files, but
 gzip can handle compressed files.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p0 -b .lfs
-%patch2 -p1 -b .filenamelen
-%patch3 -p1 -b .2gb
-%patch6 -p1 -b .endians
-%patch7 -p0 -b .LDFLAGS
+%autosetup -p1
 
 %build
 #- extra CFLAGS
@@ -51,7 +39,7 @@ install -m644 %{oname}.1 -D %{buildroot}%{_mandir}/man1/%{oname}.1
 ln -sf %{oname}.1.bz2 %{buildroot}%{_mandir}/man1/uncompress.1.bz2
 
 %files
-%doc LZW.INFO README Changes Acknowleds
+%doc LZW.INFO Changes Acknowleds
 %{_bindir}/*
 %{_mandir}/man1/*
 
