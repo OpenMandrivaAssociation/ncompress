@@ -7,7 +7,7 @@ Release:	1
 License:	Public Domain
 Group:		Archiving/Compression
 Url:		https://github.com/vapier/ncompress
-Source0:	https://github.com/vapier/ncompress/archive/v%{version}.tar.gz
+Source0:	https://github.com/vapier/ncompress/archive/%{name}-%{version}.tar.gz
 
 %description
 The ncompress package contains the compress and uncompress
