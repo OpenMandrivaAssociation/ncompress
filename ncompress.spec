@@ -30,6 +30,7 @@ Patch4:	https://src.fedoraproject.org/rpms/ncompress/raw/rawhide/f/ncompress-5.0
 # ~> downstream
 Patch5:	https://src.fedoraproject.org/rpms/ncompress/raw/rawhide/f/ncompress-5.0-memmove.patch
 
+BuildRequires:	make
 %description
 The ncompress package contains the compress and uncompress
 file compression and decompression utilities, which are compatible
